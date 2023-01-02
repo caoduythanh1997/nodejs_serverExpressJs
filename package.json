@@ -20,9 +20,12 @@
   "homepage": "https://github.com/PeSoftware/nodejs_serverExpressJs#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "express-handlebars": "^6.0.6"
+    "express-handlebars": "^6.0.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.8.2"
   },
   "devDependencies": {
+    "cors": "^2.8.5",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
     "morgan": "^1.10.0",

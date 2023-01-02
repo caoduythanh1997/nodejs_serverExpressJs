@@ -1,0 +1,15 @@
+<h2>Thêm / Sửa Thông Báo Đầu Trang</h2>
+<div class="mt-4">
+    <form method="post" action="/api_admin/store?method=PUT">
+        <div class="mb-3">
+            <input class="form-control" type="text" value="{{notice._id}}" name="idValue" aria-label="Disabled input example">
+            <div class="mt-1">
+                <label for="exampleFormControlTextarea1" class="form-label">Thông Báo Đầu Trang</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="title_notice">{{notice.title_notice}}</textarea>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Update</button>
+        </div>
+    </form>
+</div>

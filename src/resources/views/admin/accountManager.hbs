@@ -1,0 +1,37 @@
+<h2>Trang Quảng Lý Account</h2>
+<div class="mt-4">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Password</th>
+      <th scope="col">Level</th>
+      <th scope="col">Wallet</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Ngày Tạo</th>
+      <th scope="col">Ngày Update</th>
+      <th scope="col">Sửa</th>
+      <th scope="col">Xóa</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each acc}}
+    <tr>
+      <th scope="row">{{ sum @index 1}}</th>
+      <td>{{this.username}}</td>
+      <td>{{this.password}}</td>
+      <td>{{this.level}}</td>
+      <td>{{this.wallet}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.createdAt}}</td>
+      <td>{{this.updatedAt}}</td>
+      <td><a>SỬA</a></td>
+      <td><a>XÓA</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
