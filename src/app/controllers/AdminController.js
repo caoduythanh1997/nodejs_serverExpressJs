@@ -26,13 +26,12 @@ class AdminController {
   notice(req, res, next) {
     Notice.findOne({})
       .then((notice) => {
-        console.log(notice);
         res.render('admin/notice', { notice: mongooseToObject(notice) });
       })
       .catch(next);
   }
 
-  //[GET] /notice/store
+  //[PUT] /notice/store
   store(req, res, next) {
     const formData = req.body;
     Notice.updateOne({ _id: formData.idValue }, formData)

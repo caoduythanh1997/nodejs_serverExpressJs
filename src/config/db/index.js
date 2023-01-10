@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 async function connect() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/banclone_dev', {
+    await mongoose.connect('mongodb+srv://caoduythanh:s9mPhNQGUVJZIwMY@cluster0.gkefgie.mongodb.net/webbanclone?retryWrites=true&w=majority', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

@@ -3,12 +3,15 @@ const Scheme = mongoose.Schema;
 
 const Account = new Scheme(
   {
+    firstName : {type:String,require : true},
+    lastName : {type:String,require : true},
     username: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String },
     phone: { type: String },
+    accessToken: { type: String, default: null },
     level: { type: Number, default: 1 },
-    wallet: { type: String, default: 0 },
+    wallet: { type: Number, default: 0 },
   },
   {
     timestamps: true,
