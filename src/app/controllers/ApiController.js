@@ -96,7 +96,8 @@ class ApiController {
       _id : req.body._id,
     }).then((data) =>{
       if(data != null){
-        next();
+        res.json({ mes: 'Account OK' });
+        //next();
       }
       else{
         res.json({ mes: 'Tài khoản không tồn tại' });
