@@ -69,6 +69,40 @@ class ApiController {
       next();
     }
   }
+
+  UpdateMoney(req,res,next){
+    if(req.body.wallet != undefined){
+      const dt = {
+        wallet : req.body.wallet,
+      }
+      Accounts.updateOne({_id : req.body._id},dt).then(data =>{
+        const datas = {
+          message: 'Success',
+        };
+        res.json(datas)
+      }).catch((error) =>{
+        const data = {
+          message: 'Fail',
+        };
+        res.json(error)
+      })
+    }
+    else{
+      res.json('error')
+    }
+  }
+  checkAccountByID(req,res,next){
+    Accounts.findOne({
+      _id : req.body._id,
+    }).then((data) =>{
+      if(data != null){
+        next();
+      }
+      else{
+        res.json({ mes: 'Tài khoản không tồn tại' });
+      }
+    }).catch((error) => res.json('error =>' + error));
+  }
   checkAccount(req, res, next) {
     Accounts.findOne({
       username: req.body.username,
