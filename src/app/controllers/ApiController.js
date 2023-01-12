@@ -84,7 +84,7 @@ class ApiController {
         const data = {
           message: 'Fail',
         };
-        res.json(error)
+        res.json(data)
       })
     }
     else{
