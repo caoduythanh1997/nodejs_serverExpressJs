@@ -69,20 +69,62 @@ class ApiController {
       next();
     }
   }
-
+  UpdateMoneySuccess(req,res,next){
+    if (req.data != undefined) {
+      try {
+        const data = jwt.verify(req.data.accessToken, 'nowyouseme');
+        const data2 = {
+          accessToken: req.data.accessToken,
+        };
+        Accounts.updateOne({ _id: data._id }, data2)
+          .then((data) => {
+            req.data = {
+              message: 'Check Token OK',
+            };
+            next();
+          })
+          .catch((error) => {
+            req.data = {
+              message: 'Check Token Fail',
+            };
+            next();
+          });
+      } catch (error) {
+        res.json(error);
+        next();
+      }
+    } else {
+      req.data = {
+        message: 'Check Token OK',
+      };
+      next();
+    }
+  }
   UpdateMoney(req,res,next){
     if(req.body.wallet != undefined){
+      const data2 = {
+        _id: req.data._id,
+        firstName: req.data.firstName,
+        lastName: req.data.lastName,
+        username: req.data.username,
+        level: req.data.level,
+        wallet : req.body.wallet,
+      };
+      const token = jwt.sign(data2, 'nowyouseme');
       const dt = {
         wallet : req.body.wallet,
+        accessToken: token,
       }
-      Accounts.updateOne({_id : req.body._id},dt).then(data =>{
-        const datas = {
+      Accounts.updateMany({_id : req.body._id},dt).then(dt =>{
+        const data = {
           message: 'Success',
+          accessToken : token,
         };
-        res.json(datas)
+        res.json(data)
       }).catch((error) =>{
         const data = {
           message: 'Fail',
+          eror : error
         };
         res.json(data)
       })
@@ -96,6 +138,7 @@ class ApiController {
       _id : req.body._id,
     }).then((data) =>{
       if(data != null){
+        req.data = data;
         next();
       }
       else{
@@ -115,9 +158,6 @@ class ApiController {
               firstName: data.firstName,
               lastName: data.lastName,
               username: data.username,
-              password: data.password,
-              email: data.email,
-              phone: data.phone,
               level: data.level,
               wallet : data.wallet,
             };
