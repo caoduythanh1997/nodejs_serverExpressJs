@@ -109,6 +109,8 @@ class ApiController {
         username: req.data.username,
         level: req.data.level,
         wallet : req.body.wallet,
+        email : req.data.email,
+        phone : req.data.phone,
       };
       const token = jwt.sign(data2, 'nowyouseme');
       const dt = {
@@ -160,6 +162,8 @@ class ApiController {
               username: data.username,
               level: data.level,
               wallet : data.wallet,
+              email : data.email,
+              phone : data.phone,
             };
             const token = jwt.sign(data2, 'nowyouseme');
             const tk = {
